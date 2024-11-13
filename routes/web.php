@@ -42,16 +42,21 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'Adminlogout'])->name('admin.logout');
+    Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
 });
+
 Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
 });
+
 Route::middleware(['auth', 'roles:author'])->group(function () {
     Route::get('/author/dashboard', [AuthorController::class, 'AuthorDashboard'])->name('author.dashboard');
 });
+
 Route::middleware(['auth', 'roles:head_instructor'])->group(function () {
     Route::get('/head_instructor/dashboard', [HeadInstructorController::class, 'Head_instructorDashboard'])->name('head_instructor.dashboard');
 });
+
 Route::middleware(['auth', 'roles:lecturer'])->group(function () {
     Route::get('/lecturer/dashboard', [LecturerController::class, 'LecturerDashboard'])->name('lecturer.dashboard');
 });
