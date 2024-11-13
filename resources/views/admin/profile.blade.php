@@ -1,5 +1,7 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+    {{-- add jquery cdn link --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <div class="page-content">
         <!--breadcrumb-->
         <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -23,8 +25,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center d-flex flex-column align-items-center">
-                                    <img src="{{ !empty($userData->avatar) ? url('uploads/user_images/' . $userData->avatar) : url('uploads/no_image.jpg') }}"
-                                        alt="{{ $userData->name }}" class="p-1 rounded-circle bg-primary" width="110">
+                                    <img src="{{ !empty($userData->avatar) ? url('uploads/admin_images/' . $userData->avatar) : url('uploads/no_image.jpg') }}"
+                                        alt="{{ $userData->name }}" class="p-1 rounded-circle bg-primary" width="80">
                                     <div class="mt-3">
                                         <h4>{{ $userData->name }}</h4>
                                         <p class="mb-1 text-secondary">{{ $userData->username }}</p>
@@ -55,25 +57,19 @@
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        {{-- // $table->string('name');
-        // $table->string('username')->nullable();
-        // $table->string('email')->unique();
-        // $table->timestamp('email_verified_at')->nullable();
-        // $table->string('password');
-        // $table->string('avatar')->nullable();
-        // $table->string('phone')->nullable();
-        // $table->string('address')->nullable();
-        // $table->enum('role', ['admin', 'instructor', 'author', 'student','head_instructor','lecturer'])->default('student');
-        // $table->enum('status', ['active', 'inactive','pending','blocked','deleted'])->default('active'); --}}
+
                         <div class="card">
-                            <div class="card-body">
-                                <form>
+                            <form action="{{route('user.profile.store')}}" method="post" enctype="multipart/form-data" >
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $userData->id }}">
+                                <div class="card-body">
+
                                     <div class="mb-3 row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Full Name</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" value="{{ $userData->name }}" />
+                                            <input type="text" class="form-control" name="name" value="{{ $userData->name }}" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -81,7 +77,7 @@
                                             <h6 class="mb-0">Email</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" value="{{ $userData->email }}" />
+                                            <input type="text" class="form-control" name="email" value="{{ $userData->email }}" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -89,7 +85,7 @@
                                             <h6 class="mb-0">Phone</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" value="{{ $userData->phone }}" />
+                                            <input type="text" class="form-control" name="phone" value="{{ $userData->phone }}" />
                                         </div>
                                     </div>
 
@@ -98,7 +94,7 @@
                                             <h6 class="mb-0">Address</h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" value="{{ $userData->address }}" />
+                                            <input type="text" class="form-control" name="address" value="{{ $userData->address }}" />
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
@@ -114,7 +110,7 @@
                                             <h6 class="mb-0"></h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <img src="{{ !empty($userData->avatar) ? url('uploads/user_images/' . $userData->avatar) : url('uploads/no_image.jpg') }}"
+                                            <img src="{{ !empty($userData->avatar) ? url('uploads/admin_images/' . $userData->avatar) : url('uploads/no_image.jpg') }}"
                                                 alt="{{ $userData->name }}" class="p-1 rounded-circle bg-primary"
                                                 width="110" id="showImage">
                                         </div>
@@ -125,19 +121,23 @@
                                             <input type="submit" class="px-4 btn btn-primary" value="update" />
                                         </div>
                                     </div>
-                                </form>
-                            </div>
 
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <script>
-        $(document).ready(function () {
-            $('#image').change(function () {
-                var reader = new FileReader(); 
-            })
-        })
-    </script>
+        <script>
+            $(document).ready(function() {
+                $('#image').change(function() {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#showImage').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL($(this)[0].files[0]);
+                });
+            });
+        </script>
     @endsection

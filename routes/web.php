@@ -43,6 +43,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'Adminlogout'])->name('admin.logout');
     Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
+    Route::post('/user/profile/store', [AdminController::class, 'UserProfileStore'])->name('user.profile.store');
 });
 
 Route::middleware(['auth', 'roles:instructor'])->group(function () {
