@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\HeadInstructorController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Backend\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,19 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/update/password/store', [AdminController::class, 'UpdatePassword'])->name('admin.update.password');
 });
+
+Route::middleware(['auth', 'roles:admin'])->group(function () {
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/all/category', 'Index')->name('category.index');
+    });
+});
+
+
+
+
+
+
+
 
 Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');

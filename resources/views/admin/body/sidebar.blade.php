@@ -19,6 +19,8 @@
             </a>
         </li>
         
+
+        
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
@@ -31,6 +33,23 @@
                 
             </ul>
         </li>
+        {{-- Category  --}}
+        
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bx bx-category"></i>
+                </div>
+                <div class="menu-title">Category</div>
+            </a>
+            <ul>
+                <li> <a href="{{route('category.index')}}"><i class='bx bx-radio-circle'></i>Category</a>
+                </li>
+                
+            </ul>
+        </li>
+
+
+        
         <li class="menu-label">UI Elements</li>
         
         
