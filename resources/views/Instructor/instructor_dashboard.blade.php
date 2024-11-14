@@ -31,7 +31,7 @@
      
 	
 	
-	<title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+	<title>Rocker - Bootstrap 5 instructor Dashboard Template</title>
 </head>
 
 <body>
