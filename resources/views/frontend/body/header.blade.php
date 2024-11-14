@@ -1,3 +1,11 @@
+@php
+    // $user = Auth::user();
+    // // if($id === null){
+    // //     $id = 0;
+    // // }
+    // $profileData = \App\Models\User::findOrFail($user->id);
+    $profileData = '';
+@endphp
 <header class="bg-white header-menu-area">
     <div class="py-1 header-top pr-150px pl-150px border-bottom border-bottom-gray">
         <div class="container-fluid">
@@ -39,10 +47,19 @@
                         </div>
                         <ul
                             class="flex-wrap pl-3 ml-3 generic-list-item d-flex align-items-center fs-14 border-left border-left-gray">
-                            <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i
-                                    class="mr-1 la la-sign-in"></i><a href="login.html"> Login</a></li>
-                            <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a
-                                    href="sign-up.html"> Register</a></li>
+                            @auth
+                                <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a
+                                        href="{{ route('logout') }}"> Logout </a></li>
+                                <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a
+                                        href="{{ route('dashboard') }}"> Dashboard </a></li>
+                            @else
+                                <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i
+                                        class="mr-1 la la-sign-in"></i><a href="{{ route('login') }}"> Login</a></li>
+                                <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a
+                                        href="{{ route('register') }}"> Register</a></li>
+                            @endauth
+
+
                         </ul>
                     </div><!-- end header-widget -->
                 </div><!-- end col-lg-6 -->
@@ -56,7 +73,8 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <div class="logo-box">
-                            <a href="index.html" class="logo"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
+                            <a href="index.html" class="logo"><img src="{{ asset('frontend/images/logo.png') }}"
+                                    alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="mr-2 shadow-sm search-menu-toggle icon-element icon-element-sm"
                                     data-toggle="tooltip" data-placement="top" title="Search">
@@ -304,7 +322,7 @@
                                                                 Learning <i
                                                                     class="ml-1 la la-arrow-right icon"></i></a>
                                                         </div>
-                                                        <img src="{{asset('frontend/images/menu-banner-img.jpg')}}"
+                                                        <img src="{{ asset('frontend/images/menu-banner-img.jpg') }}"
                                                             alt="menu banner image"
                                                             class="w-100 h-100 rounded-rounded">
                                                     </div>
@@ -334,7 +352,8 @@
                                         <ul class="cart-dropdown-menu">
                                             <li class="media media-card">
                                                 <a href="shopping-cart.html" class="media-img">
-                                                    <img src="{{asset('frontend/images/small-img.jpg')}}" alt="Cart image">
+                                                    <img src="{{ asset('frontend/images/small-img.jpg') }}"
+                                                        alt="Cart image">
                                                 </a>
                                                 <div class="media-body">
                                                     <h5><a href="course-details.html">The Complete JavaScript
@@ -346,7 +365,8 @@
                                             </li>
                                             <li class="media media-card">
                                                 <a href="shopping-cart.html" class="media-img">
-                                                    <img src="{{asset('frontend/images/small-img.jpg')}}" alt="Cart image">
+                                                    <img src="{{ asset('frontend/images/small-img.jpg') }}"
+                                                        alt="Cart image">
                                                 </a>
                                                 <div class="media-body">
                                                     <h5><a href="course-details.html">The Complete JavaScript
@@ -465,8 +485,8 @@
         </ul>
     </div><!-- end off-canvas-menu -->
     <div class="off-canvas-menu custom-scrollbar-styled category-off-canvas-menu">
-        <div class="shadow-sm off-canvas-menu-close cat-menu-close icon-element icon-element-sm"
-            data-toggle="tooltip" data-placement="left" title="Close menu">
+        <div class="shadow-sm off-canvas-menu-close cat-menu-close icon-element icon-element-sm" data-toggle="tooltip"
+            data-placement="left" title="Close menu">
             <i class="la la-times"></i>
         </div><!-- end off-canvas-menu-close -->
         <ul class="generic-list-item off-canvas-menu-list pt-90px">

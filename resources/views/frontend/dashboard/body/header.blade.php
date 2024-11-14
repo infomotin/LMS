@@ -1,3 +1,11 @@
+@php
+    $user = Auth::user();
+    // ii($id === null){
+    //     $id = 0;
+    // };
+    $profileData = \App\Models\User::findOrFail($user->id);
+@endphp
+
 <!-- start cssload-loader -->
 <div class="preloader">
     <div class="loader">
@@ -14,7 +22,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-12">
                         <div class="logo-box logo--box">
-                            <a href="index.html" class="logo"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.html" class="logo"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="mr-2 shadow-sm search-menu-toggle icon-element icon-element-sm" data-toggle="tooltip" data-placement="top" title="Search">
                                     <i class="la la-search"></i>
@@ -46,7 +54,7 @@
                                                 <ul class="cart-dropdown-menu after-none">
                                                     <li class="media media-card">
                                                         <a href="lesson-details.html" class="media-img">
-                                                            <img class="mr-3" src="images/small-img-3.jpg" alt="Course thumbnail image">
+                                                            <img class="mr-3" src="{{asset('frontend/images/small-img-3.jpg')}}" alt="Course thumbnail image">
                                                         </a>
                                                         <div class="media-body">
                                                             <h5><a href="lesson-details.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
@@ -59,7 +67,7 @@
                                                     </li>
                                                     <li class="media media-card">
                                                         <a href="lesson-details.html" class="media-img">
-                                                            <img class="mr-3" src="images/small-img-4.jpg" alt="Course thumbnail image">
+                                                            <img class="mr-3" src="{{asset('frontend/images/small-img-4.jpg')}}" alt="Course thumbnail image">
                                                         </a>
                                                         <div class="media-body">
                                                             <h5><a href="lesson-details.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
@@ -87,7 +95,7 @@
                                                 <ul class="cart-dropdown-menu after-none">
                                                     <li class="media media-card">
                                                         <a href="shopping-cart.html" class="media-img">
-                                                            <img class="mr-3" src="images/small-img.jpg" alt="Cart image">
+                                                            <img class="mr-3" src="{{asset('frontend/images/small-img.jpg')}}" alt="Cart image">
                                                         </a>
                                                         <div class="media-body">
                                                             <h5><a href="shopping-cart.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
@@ -97,7 +105,7 @@
                                                     </li>
                                                     <li class="media media-card">
                                                         <a href="shopping-cart.html" class="media-img">
-                                                            <img class="mr-3" src="images/small-img.jpg" alt="Cart image">
+                                                            <img class="mr-3" src="{{asset('frontend/images/small-img.jpg')}}" alt="Cart image">
                                                         </a>
                                                         <div class="media-body">
                                                             <h5><a href="shopping-cart.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
@@ -116,7 +124,8 @@
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </div><!-- end shop-cart -->
+                                    </div>
+                                    <!-- end shop-cart -->
                                     <div class="pr-3 mr-3 shop-cart wishlist-cart border-right border-right-gray">
                                         <ul>
                                             <li>
@@ -128,7 +137,7 @@
                                                     <li>
                                                         <div class="media media-card">
                                                             <a href="course-details.html" class="media-img">
-                                                                <img class="mr-3" src="images/small-img.jpg" alt="Cart image">
+                                                                <img class="mr-3" src="{{asset('frontend/images/small-img.jpg')}}" alt="Cart image">
                                                             </a>
                                                             <div class="media-body">
                                                                 <h5><a href="course-details.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
@@ -141,7 +150,7 @@
                                                     <li>
                                                         <div class="media media-card">
                                                             <a href="course-details.html" class="media-img">
-                                                                <img class="mr-3" src="images/small-img.jpg" alt="Cart image">
+                                                                <img class="mr-3" src="{{asset('frontend/images/small-img.jpg')}}" alt="Cart image">
                                                             </a>
                                                             <div class="media-body">
                                                                 <h5><a href="course-details.html">The Complete JavaScript Course 2021: From Zero to Expert!</a></h5>
@@ -207,24 +216,25 @@
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </div><!-- end shop-cart -->
+                                    </div>
+                                    <!-- end shop-cart -->
                                     <div class="shop-cart user-profile-cart">
                                         <ul>
                                             <li>
                                                 <div class="shop-cart-btn">
                                                     <div class="avatar-xs">
-                                                        <img class="rounded-full img-fluid" src="images/small-avatar-1.jpg" alt="Avatar image">
+                                                        <img class="rounded-full img-fluid" src="{{ (!empty($profileData->avatar)) ? url('uploads/user_images/' . $profileData->avatar) : url('uploads/no_image.jpg') }}" alt="Avatar image">
                                                     </div>
                                                     <span class="dot-status bg-1"></span>
                                                 </div>
                                                 <ul class="p-0 cart-dropdown-menu after-none notification-dropdown-menu">
                                                     <li class="menu-heading-block d-flex align-items-center">
                                                         <a href="teacher-detail.html" class="flex-shrink-0 avatar-sm d-block">
-                                                            <img class="rounded-full img-fluid" src="images/small-avatar-1.jpg" alt="Avatar image">
+                                                            <img class="rounded-full img-fluid" src="{{ (!empty($profileData->avatar)) ? url('uploads/user_images/' . $profileData->avatar) : url('uploads/no_image.jpg') }}" alt="Avatar image">
                                                         </a>
                                                         <div class="ml-2">
-                                                            <h4><a href="teacher-detail.html" class="text-black">Alex Smith</a></h4>
-                                                            <span class="d-block fs-14 lh-20">alexsmith@example.com</span>
+                                                            <h4><a href="teacher-detail.html" class="text-black">{{$profileData->name}}</a></h4>
+                                                            <span class="d-block fs-14 lh-20">{{$profileData->email}}</span>
                                                         </div>
                                                     </li>
                                                     <li>
@@ -310,7 +320,7 @@
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="index.html">
+                                                                <a href="{{ route('user.logout') }}">
                                                                     <i class="mr-1 la la-power-off"></i> Logout
                                                                 </a>
                                                             </li>
