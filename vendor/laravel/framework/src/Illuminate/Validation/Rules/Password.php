@@ -35,7 +35,7 @@ class Password implements Rule, DataAwareRule, ValidatorAwareRule
      *
      * @var int
      */
-    protected $min = 8;
+    protected $min = 4;
 
     /**
      * The maximum size of the password.

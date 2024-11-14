@@ -56,7 +56,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-2">
                         <div class="logo-box">
-                            <a href="index.html" class="logo"><img src="images/logo.png" alt="logo"></a>
+                            <a href="index.html" class="logo"><img src="{{asset('frontend/images/logo.png')}}" alt="logo"></a>
                             <div class="user-btn-action">
                                 <div class="mr-2 shadow-sm search-menu-toggle icon-element icon-element-sm"
                                     data-toggle="tooltip" data-placement="top" title="Search">
@@ -304,7 +304,7 @@
                                                                 Learning <i
                                                                     class="ml-1 la la-arrow-right icon"></i></a>
                                                         </div>
-                                                        <img src="images/menu-banner-img.jpg"
+                                                        <img src="{{asset('frontend/images/menu-banner-img.jpg')}}"
                                                             alt="menu banner image"
                                                             class="w-100 h-100 rounded-rounded">
                                                     </div>
@@ -334,7 +334,7 @@
                                         <ul class="cart-dropdown-menu">
                                             <li class="media media-card">
                                                 <a href="shopping-cart.html" class="media-img">
-                                                    <img src="images/small-img.jpg" alt="Cart image">
+                                                    <img src="{{asset('frontend/images/small-img.jpg')}}" alt="Cart image">
                                                 </a>
                                                 <div class="media-body">
                                                     <h5><a href="course-details.html">The Complete JavaScript
@@ -346,7 +346,7 @@
                                             </li>
                                             <li class="media media-card">
                                                 <a href="shopping-cart.html" class="media-img">
-                                                    <img src="images/small-img.jpg" alt="Cart image">
+                                                    <img src="{{asset('frontend/images/small-img.jpg')}}" alt="Cart image">
                                                 </a>
                                                 <div class="media-body">
                                                     <h5><a href="course-details.html">The Complete JavaScript

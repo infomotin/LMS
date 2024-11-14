@@ -20,13 +20,15 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+
+Route::get('/',[UserController::class,'index'])->name('home');
+
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('frontend.dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
