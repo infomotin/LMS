@@ -651,7 +651,7 @@
             <div class="px-3 user-box dropdown">
                 <a class="gap-3 d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret"
                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('uploads/admin_images/'.$data->avatar) }}" class="user-img"
+                    <img src="{{ asset('uploads/instructor_images/'.$data->avatar) }}" class="user-img"
                         alt="{{$data->name}}">
                     <div class="user-info">
                         <p class="mb-0 user-name">{{$data->name}}</p>
@@ -659,7 +659,7 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.profile') }}"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.profile') }}"><i
                                 class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
@@ -668,7 +668,7 @@
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
                                 class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.change.password')}}"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.change.password')}}"><i
                                 class="bx bx-dollar-circle fs-5"></i><span>Change Password </span></a>
                     </li>
                     <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
@@ -677,7 +677,7 @@
                     <li>
                         <div class="mb-0 dropdown-divider"></div>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('admin.logout') }}"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.logout') }}"><i
                                 class="bx bx-log-out-circle"></i><span>Logout</span></a>
                     </li>
                 </ul>
