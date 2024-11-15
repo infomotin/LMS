@@ -44,6 +44,8 @@
             <ul>
                 <li> <a href="{{route('category.index')}}"><i class='bx bx-radio-circle'></i>Category</a>
                 </li>
+                <li> <a href="{{route('sub-category.index')}}"><i class='bx bx-radio-circle'></i>Sub-category</a>
+                </li>
                 
             </ul>
         </li>

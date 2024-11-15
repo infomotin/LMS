@@ -9,6 +9,7 @@ use App\Http\Controllers\HeadInstructorController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +61,22 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
 Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(CategoryController::class)->group(function () {
-        Route::get('/all/category', 'Index')->name('category.index');
+        Route::get('/all/category', 'index')->name('category.index');
+        Route::get('/add/category', 'create')->name('category.create');
+        Route::post('/store/category', 'store')->name('category.store');
+        Route::get('/edit/category/{id}', 'edit')->name('category.edit');
+        Route::post('/update/category', 'update')->name('category.update');
+        Route::get('/delete/category/{id}', 'destroy')->name('category.destroy');
+    });
+});
+Route::middleware(['auth', 'roles:admin'])->group(function () {
+    Route::controller(SubCategoryController::class)->group(function () {
+        Route::get('/all/sub-category', 'index')->name('sub-category.index');
+        Route::get('/add/sub-category', 'create')->name('sub-category.create');
+        Route::post('/store/sub-category', 'store')->name('sub-category.store');
+        Route::get('/edit/sub-category/{id}', 'edit')->name('sub-category.edit');
+        Route::post('/update/sub-category', 'update')->name('sub-category.update');
+        Route::get('/delete/sub-category/{id}', 'destroy')->name('sub-category.destroy');
     });
 });
 
