@@ -3,9 +3,9 @@
     @php
         $id = Auth::user()->id;
         $data = App\Models\User::where('id', $id)->first();
-        $active = $data->active;
+        $active = $data->status;
     @endphp
-    @if($active == 'active')
+    @if($active === 'active')
     <div class="page-content">
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
             <div class="col">

@@ -10,27 +10,14 @@ use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\CourseController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-
-Route::get('/',[UserController::class,'index'])->name('home');
+Route::get('/', [UserController::class, 'index'])->name('home');
 
 
 Route::get('/dashboard', function () {
     return view('frontend.dashboard.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/user/profile', [UserController::class, 'ShowUserProfile'])->name('user.profile');
@@ -46,9 +33,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
 // adminlogin 
-
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
@@ -67,7 +52,6 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/admin/head-instructor/index', 'HeadInstructorIndex')->name('admin.head-instructor.index');
         Route::get('/admin/lecturer/index', 'LecturerIndex')->name('admin.lecturer.index');
         Route::get('/admin/student/index', 'StudentIndex')->name('admin.student.index');
-        
     });
 });
 
@@ -93,12 +77,6 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     });
 });
 
-
-
-
-
-
-
 // instructor registration
 Route::get('/instructor/become', [InstructorController::class, 'InstructorBecome'])->name('instructor.become');
 Route::post('/instructor/register', [InstructorController::class, 'InstructorRegister'])->name('instructor.register');
@@ -111,6 +89,18 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('/instructor/change/password', [InstructorController::class, 'InstructorChangePassword'])->name('instructor.change.password');
     Route::post('/update/password/store', [InstructorController::class, 'UpdatePassword'])->name('instructor.update.password');
 });
+//CourseController
+Route::middleware(['auth', 'roles:instructor'])->group(function () {
+    Route::controller(CourseController::class)->group(function () {
+        Route::get('/course', 'index')->name('course.index');
+        Route::get('/add/course', 'create')->name('course.create');
+        Route::post('/store/course', 'store')->name('course.store');
+        Route::get('/edit/course/{id}', 'edit')->name('course.edit');
+        Route::post('/update/course', 'update')->name('course.update');
+        Route::get('/delete/course/{id}', 'destroy')->name('course.destroy');
+    });
+});
+
 
 Route::middleware(['auth', 'roles:author'])->group(function () {
     Route::get('/author/dashboard', [AuthorController::class, 'AuthorDashboard'])->name('author.dashboard');

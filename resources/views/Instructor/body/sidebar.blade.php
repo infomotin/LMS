@@ -36,12 +36,12 @@
                     </li>
                 </ul>
             </li>
-            <li class="menu-label">UI Elements</li>
+            <li class="menu-label">Course</li>
             <li>
-                <a href="form-froala-editor.html">
+                <a href="{{ route('course.index') }}">
                     <div class="parent-icon"><i class='bx bx-code-alt'></i>
                     </div>
-                    <div class="menu-title">Froala Editor</div>
+                    <div class="menu-title">Course list</div>
                 </a>
             </li>
             <li class="menu-label">Pages</li>
