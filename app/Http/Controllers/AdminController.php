@@ -83,4 +83,37 @@ class AdminController extends Controller
         Auth::logout();
         return back()->with($notification);
     }
+
+    //InstructorIndex
+    public function InstructorIndex(){
+        $instructors = User::where('role', 'instructor')->get();
+        return view('admin.backend.instructor.index', compact('instructors'));
+    }
+    //InstructorStatusUpdate
+    public function InstructorStatusUpdate(Request $request){
+        $user = User::findOrFail($request->user_id);
+        $user->status = $request->status;
+        $user->save();
+        return response()->json(['message'=>'Status change successfully.']);
+    }
+    //AuthorIndex
+    public function AuthorIndex(){
+        $authors = User::where('role', 'author')->get();
+        return view('admin.backend.author.index', compact('authors'));
+    }
+    //HeadInstructorIndex
+    public function HeadInstructorIndex(){
+        $instructors = User::where('role', 'head_instructor')->get();
+        return view('admin.backend.head_instructor.index', compact('instructors'));
+    }
+    //LecturerIndex
+    public function LecturerIndex(){
+        $lecturers = User::where('role', 'lecturer')->get();
+        return view('admin.backend.lecturer.index', compact('lecturers'));
+    }
+    //StudentIndex
+    public function StudentIndex(){
+        $students = User::where('role', 'student')->get();
+        return view('admin.backend.student.index', compact('students'));
+    }
 }

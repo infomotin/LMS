@@ -1,5 +1,11 @@
 @extends('instructor.instructor_dashboard')
 @section('instructor')
+    @php
+        $id = Auth::user()->id;
+        $data = App\Models\User::where('id', $id)->first();
+        $active = $data->active;
+    @endphp
+    @if($active == 'active')
     <div class="page-content">
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
             <div class="col">
@@ -71,4 +77,27 @@
 
 
     </div>
+    @else
+    <div class="page-content">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+            <div class="col">
+                <div class="border-0 border-4 card radius-10 border-start border-info">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-secondary">Your Are Inactive </p>
+                                <h4 class="my-1 text-info">Please Contact To Admin</h4>
+                                <p class="mb-0 font-13">Email: admin@gmail.com </p>
+                            </div>
+                            <div class="text-white widgets-icons-2 rounded-circle bg-gradient-blues ms-auto"><i
+                                    class='bx bxs-cart'></i>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
 @endsection

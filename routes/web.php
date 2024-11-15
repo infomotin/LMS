@@ -58,6 +58,19 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/update/password/store', [AdminController::class, 'UpdatePassword'])->name('admin.update.password');
 });
+// User Status Controllr 
+Route::middleware(['auth', 'roles:admin'])->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/admin/instructor/index', 'InstructorIndex')->name('admin.instructor.index');
+        Route::post('/admin/instructor/status/update/', 'InstructorStatusUpdate')->name('admin.instructor.status.update');
+        Route::get('/admin/author/index', 'AuthorIndex')->name('admin.author.index');
+        Route::get('/admin/head-instructor/index', 'HeadInstructorIndex')->name('admin.head-instructor.index');
+        Route::get('/admin/lecturer/index', 'LecturerIndex')->name('admin.lecturer.index');
+        Route::get('/admin/student/index', 'StudentIndex')->name('admin.student.index');
+        
+    });
+});
+
 
 Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(CategoryController::class)->group(function () {
@@ -86,6 +99,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
 
 
+// instructor registration
+Route::get('/instructor/become', [InstructorController::class, 'InstructorBecome'])->name('instructor.become');
+Route::post('/instructor/register', [InstructorController::class, 'InstructorRegister'])->name('instructor.register');
 
 Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');

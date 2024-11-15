@@ -10,6 +10,40 @@ use Illuminate\Support\Facades\Hash;
 
 class InstructorController extends Controller
 {
+    // InstructorBecome
+    public function InstructorBecome(){
+        return view('Instructor.register');
+    }
+    //InstructorRegister
+    public function InstructorRegister(Request $request){
+        // dd($request->all());
+        // $request->validate([
+        //     'name' => ['required'],
+        //     'email' => ['required|email|unique:users'],
+        //     'password' => ['required|min:6|confirmed'],
+        //     'phone' => ['required'],
+        //     'address' => ['required'],
+        //     'username' => [r'equired|unique:users'],
+        // ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'username' => $request->username,
+            'status' => 'inactive',
+            'role' => 'instructor',
+        ]);
+        // dd($user);
+        $notification = array(
+            'message' => 'Instructor Registration information added Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('instructor.register')->with($notification);
+    }
     //InstructorDashboard
     public function InstructorDashboard(){
 
