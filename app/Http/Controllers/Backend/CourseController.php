@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Backend\Course;
+use App\Models\Backend\Category;
+use App\Models\Backend\SubCategory;
 
 class CourseController extends Controller
 {
@@ -18,7 +20,13 @@ class CourseController extends Controller
     }
     //create
     public function create(){
-        return view('instructor.course.add');
+        $categorys = Category::latest()->get();
+        return view('instructor.course.add', compact('categorys'));
     }
-
+    // /GetSubCategory
+    public function GetSubCategory($category_id){
+        $subcategories = SubCategory::where('category_id', $category_id)->orderBy('sub_category_name', 'asc')->get();
+        // dd($subcategories);
+        return json_encode($subcategories);
+    }
 }

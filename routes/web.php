@@ -74,6 +74,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/edit/sub-category/{id}', 'edit')->name('sub-category.edit');
         Route::post('/update/sub-category', 'update')->name('sub-category.update');
         Route::get('/delete/sub-category/{id}', 'destroy')->name('sub-category.destroy');
+       
     });
 });
 
@@ -98,6 +99,7 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
         Route::get('/edit/course/{id}', 'edit')->name('course.edit');
         Route::post('/update/course', 'update')->name('course.update');
         Route::get('/delete/course/{id}', 'destroy')->name('course.destroy');
+        Route::get('/subcategory/ajax/{category_id}', 'GetSubCategory');
     });
 });
 

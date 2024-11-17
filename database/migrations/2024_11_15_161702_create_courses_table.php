@@ -24,6 +24,7 @@ return new class extends Migration
             //
             $table->longText('course_description')->nullable();
             $table->string('course_duration')->nullable();
+            $table->string('course_intovideo')->nullable();
             $table->string('course_level')->nullable();
             $table->string('course_language')->nullable();
             $table->string('course_resources')->nullable();
