@@ -69,8 +69,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-info">Edit</a>
-                                                <a href="#" id="delete" class="btn btn-danger">Delete</a>
+                                                <a href="{{ route('course.edit', $item->id) }}" class="btn btn-info">Edit</a>
+                                                <a href="{{ route('course.destroy', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
                                             </td> 
                                         </tr>
                                         @endforeach
