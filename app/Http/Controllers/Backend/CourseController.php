@@ -94,14 +94,46 @@ class CourseController extends Controller
         $subcategories = SubCategory::latest()->get();
         return view('instructor.course.edit', compact('course', 'goals','categories','subcategories'));
     }
+    //update
+    public function update(Request $request){
+        // dd(request()->all());
+        $cid = $request->course_id;
+        // dd($cid);
+        Course::find($cid)->update([
+            
+            "course_name" => $request->course_name,
+            "course_title" => $request->course_title,
+            "category_id" => $request->category_id,
+            "subcategory_id" => $request->subcategory_id,
+            "course_certificate" => $request->course_certificate,
+            "course_level" => $request->course_level,
+            "course_price" => $request->course_price,
+            "course_discount" => $request->course_discount,
+            "course_duration" => $request->course_duration,
+            "course_resources" => $request->course_resources,
+            "course_prerequisites" => $request->course_prerequisites,
+            "course_description" => $request->course_description,
+            "course_features" => $request->course_features,
+            "course_heighestrated" => $request->course_heighestrated,
+        ]);
+        $notification = array(
+            'message' => 'Course Updated Successfully',
+            'alert-type' => 'success'
+        );
+        
+        return redirect()->route('course.index')->with($notification);
 
+    }
     //updateVideo
     public function updateVideo(Request $request){
-        $id = $request->id;
-        $old_video = $request->old_video;
+        // dd($request->all());
+        $id = $request->course_id;
+        $old_video = $request->old_vid;
         if($request->file('course_intovideo')){
-            unlink($old_video);
+            // dd($old_video);
+            // unlink($old_video);
             $video = $request->file('course_intovideo');
+            dd($video);
             $video_name_gen = time().'.'.$video->getClientOriginalExtension();
             $video->move(public_path('upload/course/'), $video_name_gen);
             $video_url = 'upload/course/'.$video_name_gen;
@@ -110,7 +142,7 @@ class CourseController extends Controller
                 'message' => 'Course Video Updated Successfully',
                 'alert-type' => 'success'
             );
-            return redirect()->back()->with($notification);
+            return redirect()->route('course.index')->with($notification);
         }
     }
 
@@ -118,8 +150,10 @@ class CourseController extends Controller
 
     // updateImage
     public function updateImage(Request $request){
-        $id = $request->id;
-        $old_image = $request->old_image;
+        // dd($request->all());
+        $id = $request->course_id;
+        $old_image = $request->old_img;
+        // dd($old_image);
         if($request->file('course_image')){
             unlink($old_image);
             $image = $request->file('course_image');
@@ -131,7 +165,8 @@ class CourseController extends Controller
                 'message' => 'Course Image Updated Successfully',
                 'alert-type' => 'success'
             );
-            return redirect()->back()->with($notification);
+            
+            return redirect()->route('course.index')->with($notification);
         }
     }
     //updateGoal

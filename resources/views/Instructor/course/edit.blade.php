@@ -1,6 +1,6 @@
 @extends('instructor.instructor_dashboard')
 @section('instructor')
-    <<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <div class="page-content">
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="ps-3">
@@ -12,13 +12,12 @@
                     </ol>
                 </nav>
             </div>
-
         </div>
     </div>
     <div class="card">
         <div class="card-body p-4">
             <h5 class="mb-4">Edit Course</h5>
-            <form method="post" action="{{ route('course.update', $course->id) }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('course.update') }}" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="course_id" value="{{ $course->id }}">
 
@@ -46,7 +45,7 @@
 
                     </select>
                 </div>
-
+                
 
                 <div class="form-group col-md-6">
                     <label for="input1" class="form-label">Course Subcategory </label>
@@ -55,12 +54,12 @@
                         @foreach ($subcategories as $subcat)
                             <option value="{{ $subcat->id }}"
                                 {{ $subcat->id == $course->subcategory_id ? 'selected' : '' }}>
-                                {{ $subcat->subcategory_name }}</option>
+                                {{ $subcat->sub_category_name }}</option>
                         @endforeach
 
                     </select>
                 </div>
-
+                {{-- @dd($subcat->id == $course->subcategory_id ); --}}
 
                 <div class="form-group col-md-6">
                     <label for="input1" class="form-label">Course Certificate </label>
@@ -162,7 +161,7 @@
             <div class="card-body">
                 <form action="{{ route('update.course.image') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="id" value="{{ $course->id }}">
+                    <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <input type="hidden" name="old_img" value="{{ $course->course_image }}">
                     <div class="row">
                         <div class="form-group col-md-6">
