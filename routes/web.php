@@ -105,6 +105,12 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
         Route::get('/subcategory/ajax/{category_id}', 'GetSubCategory');
     });
 });
+Route::middleware(['auth', 'roles:instructor'])->group(function () {
+    Route::controller(CourseController::class)->group(function () {
+        Route::get('/course/add/lecture/{id}', 'AddLecture')->name('add.course.lecture');
+        Route::post('/course/add/section', 'AddSection')->name('add.course.section');
+    });
+});
 
 
 Route::middleware(['auth', 'roles:author'])->group(function () {

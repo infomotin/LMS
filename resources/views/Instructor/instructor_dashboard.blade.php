@@ -2,41 +2,38 @@
 <html lang="en">
 
 <head>
-    <!--plugins-->
-	
-	
-	
-	<link href="{{ asset('backend/assets/plugins/bs-stepper/css/bs-stepper.css') }}" rel="stylesheet" />
-    
-	
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--favicon-->
-    <link rel="icon" href="{{ asset('backend/assets/images/favicon-32x32.png') }}" type="image/png" />
-    <!--plugins-->
-    <link href="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
-    <link href="{{ asset('backend/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
-    <link href="{{ asset('backend/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
-    <!-- loader-->
-    <link href="{{ asset('backend/assets/css/pace.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('backend/assets/js/pace.min.js') }}"></script>
-    <!-- Bootstrap CSS -->
-    <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/css/bootstrap-extended.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="{{ asset('backend/assets/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/assets/css/icons.css') }}" rel="stylesheet">
-    <!-- Theme Style CSS -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}" />
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}" />
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--favicon-->
+	<link rel="icon" href="{{ asset('backend/assets/images/favicon-32x32.png') }}" type="image/png"/>
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<!--plugins-->
+	<link href="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('backend/assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet" />
+	<link href="{{ asset('backend/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet"/>
+	<!-- loader-->
+	{{-- <link href="{{ asset('backend/assets/css/pace.min.css') }}" rel="stylesheet"/>
+	<script src="{{ asset('backend/assets/js/pace.min.js') }}"></script> --}}
+	<!-- Bootstrap CSS -->
+	<link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('backend/assets/css/bootstrap-extended.css') }}" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+	<link href="{{ asset('backend/assets/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('backend/assets/css/icons.css') }}" rel="stylesheet">
+	<!-- Theme Style CSS -->
+	<link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}"/>
+	<link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}"/>
+	<!-- Datatable -->
+	<link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+	<!-- End Datatable -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 
 
 
-    <title>Rocker - Bootstrap 5 instructor Dashboard Template</title>
+    <title>Instructor Dashboard</title>
 </head>
 
 <body>
@@ -72,53 +69,29 @@
 
 
     <!--start switcher-->
-    @include('instructor.componentes.switcher')
+    {{-- @include('instructor.componentes.switcher') --}}
 
-    <!--end switcher-->
-    <!-- Bootstrap JS -->
     <script src="{{ asset('backend/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!--plugins-->
-    <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
-   
-    <script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-    <script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}"></script>
-    <script src="{{ asset('backend/assets/js/index.js') }}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <!--app JS-->
-    <script src="{{ asset('backend/assets/js/app.js') }}"></script>
-    {{-- data-table js --}}
-    <script src="{{ asset('backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
-    <script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
-    <!--plugins-->
-	<script src="{{ asset('backend/assets/plugins/bs-stepper/js/bs-stepper.min.js') }}"></script>
-	<script src="{{ asset('backend/assets/plugins/bs-stepper/js/main.js') }}"></script>
-	<!-- Bootstrap JS -->
-	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <!-- Bootstrap JS -->
-	<script src="{{ asset('backend/assets/js/bootstrap.bundle.min.js')}}"></script> 
 	<!--plugins-->
-	<script src="{{ asset('backend/assets/js/jquery.min.js')}}"></script>
-	<script src="{{ asset('backend/assets/plugins/simplebar/js/simplebar.min.js')}}"></script>
-	<script src="{{ asset('backend/assets/plugins/metismenu/js/metisMenu.min.js')}}"></script>
-	<script src="{{ asset('backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js')}}"></script>
-	<script src="{{ asset('backend/assets/plugins/bs-stepper/js/bs-stepper.min.js')}}"></script>
-	<script src="{{ asset('backend/assets/plugins/bs-stepper/js/main.js')}}"></script>
-	
-	<!--app JS-->
-	<script src="{{ asset('backend/assets/js/app.js')}}"></script>
+	<script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+	<script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+	<scrpt src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}"></scrpt>
+    <script src="{{ asset('backend/assets/js/index.js') }}"></script>
+
+    <!--app JS-->
+	<script src="{{ asset('backend/assets/js/app.js') }}"></script>
+	<script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="{{ asset('backend/assets/js/code.js') }}"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
-<script>
-   tinymce.init({
-     selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE
-     plugins: 'powerpaste advcode table lists checklist',
-     toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
-   });
-</script>
+
     <script>
         $(document).ready(function() {
             $('#example').DataTable();

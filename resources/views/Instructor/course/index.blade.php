@@ -69,8 +69,9 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('course.edit', $item->id) }}" class="btn btn-info">Edit</a>
-                                                <a href="{{ route('course.destroy', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
+                                                <a href="{{ route('course.edit', $item->id) }}" class="btn btn-info" title="Edit"><i class="lni lni-pencil-alt"></i></a>
+                                                <a href="{{ route('course.destroy', $item->id) }}" id="delete" class="btn btn-danger" title="Delete"><i class="lni lni-trash"></i></a>
+                                                <a href="{{ route('add.course.lecture', $item->id) }}" class="btn btn-danger" title="Section"><i class="lni lni-layout"></i></a>
                                             </td> 
                                         </tr>
                                         @endforeach

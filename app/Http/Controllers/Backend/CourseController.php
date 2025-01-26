@@ -10,7 +10,7 @@ use App\Models\Backend\Course_goal;
 use App\Models\Backend\Category;
 use App\Models\Backend\SubCategory;
 use Intervention\Image\Facades\Image;
-
+use App\Models\CouresSection;
 class CourseController extends Controller
 {
     //index
@@ -196,5 +196,31 @@ class CourseController extends Controller
         $subcategories = SubCategory::where('category_id', $category_id)->orderBy('sub_category_name', 'asc')->get();
         // dd($subcategories);
         return json_encode($subcategories);
+    }
+
+    //AddLecture
+    public function AddLecture($id){
+        // dd('working');
+        $course = Course::findOrFail($id);
+        $courseSections = CouresSection::where('course_id', $id)->get();
+        return view('instructor.course.section.add_courese_lecture', compact('course', 'courseSections'));
+    }
+    //AddSection
+    public function AddSection(Request $request){
+        dd($request->all());
+        // find Corse 
+        $course = Course::findOrFail($request->course_id);
+        $section = new CouresSection();
+        $section->section_title = $request->section_title;
+        $section->section_slug = str_replace(' ', '-', $request->section_title);
+        $section->course_id = $request->course_id;
+        $section->save();
+        $notification = array(
+            'message' => 'Section Added Successfully',
+            'alert-type' => 'success'
+        );
+        
+        return redirect()->route('course.index')->with($notification);
+
     }
 }
